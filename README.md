@@ -1,14 +1,19 @@
+![License](https://img.shields.io/github/license/mars733/automation-scripts)
+![GitHub repo size](https://img.shields.io/github/repo-size/mars733/automation-scripts)
+![GitHub stars](https://img.shields.io/github/stars/mars733/automation-scripts?style=social)
+
 # Automation Scripts
 
 A collection of small automation scripts to speed up development tasks.
 
 ## 📂 Structure
-automation-scripts/ 
-├── c/ 
-│   └── c.sh 
-├── README.md 
+automation-scripts/          
+├── c/                     
+│   └── c.sh          
+├── README.md        
 └── .gitignore
-
+           
+ 
 ## 🧰 C Automation Script
 
 ### `c.sh`
