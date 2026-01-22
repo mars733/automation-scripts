@@ -1,0 +1,16 @@
+# Compiled binaries
+a.out
+*.o
+*.out
+
+# Executables created by c.sh
+hello
+test
+main
+
+# Editor files
+*~
+.nano_history
+
+# OS files
+.DS_Store
