@@ -1,40 +1,43 @@
-#!/bin/bash
-name=$1   #hello
+#!/usr/bin/env bash
 
-# Check if a filename was provided
-if [ -z "$name" ]; then
-    echo "Usage: bash c.sh filename"
+set -e
+
+name="$1"
+
+# Check argument
+if [[ -z "$name" ]]; then
+    echo "Usage: c.sh <filename-without-extension>"
     exit 1
 fi
-#Adding .c extension in name 
-file="${name}.c" #file = hello.c
 
-# Create the file if it doesn't exist
-if [ ! -f "$file" ]; then
-    echo "Creating $file with boilerplate..."
+file="${name}.c"
+exe="$name"
+
+# Create C file with boilerplate if missing
+if [[ ! -f "$file" ]]; then
+    echo "Creating $file..."
     cat <<EOF > "$file"
-
 #include <stdio.h>
 
-int main() {
-    printf("Hello world\n");
+int main(void) {
+    printf("Hello, world!\\n");
     return 0;
 }
 EOF
 fi
 
-# Open editor
-nano "$file"
+# Open editor (nano fallback)
+${EDITOR:-nano} "$file"
 
-#clear screen
 clear
 
-# Compile and Run
-if clang "$file" -o "$name"; then
-    echo -e "\n--- Running $name ---"
-    ./"$name"
-    echo -e "\n"
+# Compile
+echo "Compiling $file..."
+if clang -Wall -Wextra "$file" -o "$exe"; then
+    echo "Compilation successful ✅"
+    echo
+    echo "--- Running $exe ---"
+    ./"$exe"
 else
-    echo "Compilation failed."
+    echo "Compilation failed ❌"
 fi
-
